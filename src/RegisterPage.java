@@ -19,8 +19,13 @@ public class RegisterPage implements ActionListener {
     private JButton register = new JButton("Register");
     private JLabel message = new JLabel();
 
-    RegisterPage(){
+    private UserList userList;
+    private User user;
 
+
+
+    RegisterPage(UserList userList ,String accountInfo){
+        this.userList = userList;
         // Set up grid of Label and Button
         userId.setBounds(40,100,80,25);
         userIdField.setBounds(130,100,100,25);
@@ -61,16 +66,19 @@ public class RegisterPage implements ActionListener {
            String password = passwordField.getText();
            try {
                writeFile(user, password,"src/AccountInfo");
+               this.user = new User(user, 0,0);
+               userList.addToList(this.user);
            } catch (IOException ioException) {
                ioException.printStackTrace();
            }
-           message.setText("Register success");
+
        }
        else{
            frame.setVisible(false);
-           LoginPage loginPage = new LoginPage("src/AccountInfo");
+           LoginPage loginPage = new LoginPage("src/AccountInfo",this.userList);
        }
     }
+
 
     public void writeFile(String user, String password, String fileName) throws IOException{
             File file = new File(fileName);
@@ -78,20 +86,22 @@ public class RegisterPage implements ActionListener {
             boolean found = false;
             while (scanner.hasNext() && !found) {
                 String line = scanner.nextLine();
-                if (line.equals(userId.getText())) {
+                if (line.equals(user)) {
                     message.setText("Account exist");
                     return;
                 }
             }
             if (!found) {
-                FileWriter writer = new FileWriter(fileName);
+                FileWriter writer = new FileWriter(fileName,true);
                 writer.write(user + '\n');
                 writer.write(password + '\n');
                 writer.close();
             }
+            message.setText("Register success");
+            return;
         }
     public static void main(String[] args) {
-        RegisterPage registerPage = new RegisterPage();
+        RegisterPage registerPage = new RegisterPage(new UserList(),"scr/AccountInfo");
     }
 }
 

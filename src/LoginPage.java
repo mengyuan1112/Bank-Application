@@ -17,11 +17,11 @@ public class LoginPage implements ActionListener {
     private JLabel success = new JLabel();
     private JButton register = new JButton("Register");
 
+    private  UserList userList;
 
+    LoginPage(String file, UserList userList){
 
-    LoginPage(String file){
-
-
+        this.userList = userList;
         userId.setBounds(10,20,80,25);
         password.setBounds(10,50,80,25);
         userText.setBounds(100,20,165,25);
@@ -54,17 +54,19 @@ public class LoginPage implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == login){
-            String user = userText.getText();
+            String userId = userText.getText();
             String password = String.valueOf(passwordText.getPassword());
             boolean found = false;
             try{
-                found = readFile(user,password,"src/AccountInfo");
+                found = readFile(userId,password,"src/AccountInfo");
+
             } catch (IOException ioException){
                 ioException.printStackTrace();
             }
             if(found){
+                User user = this.userList.getUser(userId);
                 frame.setVisible(false);
-                Bank bank = new Bank();
+                Bank bank = new Bank(this.userList, user);
             }
             else{
                 success.setText("Wrong Input");
@@ -72,7 +74,7 @@ public class LoginPage implements ActionListener {
         }
         else{
             frame.setVisible(false);
-            RegisterPage registerPage = new RegisterPage();
+            RegisterPage registerPage = new RegisterPage(this.userList,"src/AccountInfo");
         }
     }
 
@@ -91,5 +93,9 @@ public class LoginPage implements ActionListener {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        LoginPage loginPage = new LoginPage("src/AccountInfo", new UserList());
     }
 }
