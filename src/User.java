@@ -1,8 +1,8 @@
 public class User {
-    private String userId;
-    private int checkingAccount;
-    private int savingAccount;
-    private static String message = "";
+    public String userId;
+    public int checkingAccount;
+    public int savingAccount;
+    public static String message = "";
 
     User(String UserId, int checkingAccount, int savingAccount){
         this.userId = UserId;
