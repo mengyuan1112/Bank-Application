@@ -22,7 +22,13 @@ public class User {
         return this.checkingAccount;
     }
 
-    public void withDraw(int money){
-
+    public void WithDraw(String account, int money){
+        if(account == "Saving Account") savingAccount -= money;
+        else checkingAccount-=money;
     }
+    public void Deposit(String account, int money){
+        if(account == "Saving Account") savingAccount+=money;
+        else checkingAccount+=money;
+    }
+
 }

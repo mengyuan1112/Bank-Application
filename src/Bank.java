@@ -10,13 +10,12 @@ public class Bank extends BankAccount implements ActionListener {
     private JButton balance = new JButton("Balance");
     private JButton exit = new JButton("Exit");
     private JLabel welcome = new JLabel("Welcome");
-    private JLabel userId = new JLabel();
+    private JLabel userId = new JLabel(super.getUser().getUserId());
 
-    private User user;
+    public User user = super.getUser();
 
-    Bank(User user){
+    Bank(){
 
-        this.user = user;
         withdraw.setBounds(250,60,100,50);
         deposit.setBounds(250,120,100,50);
         balance.setBounds(250,180,100,50);
@@ -27,12 +26,7 @@ public class Bank extends BankAccount implements ActionListener {
         welcome.setFont(new Font(null, Font.BOLD,30));
 
 
-        userId.setText(user.getUserId());
-
-        withdraw.addActionListener(this);
-        deposit.addActionListener(this);
-        balance.addActionListener(this);
-        exit.addActionListener(this);
+//        userId.setText(super.getUser().getUserId());
 
 
         frame.add(withdraw);
@@ -47,30 +41,38 @@ public class Bank extends BankAccount implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
+
+        withdraw.addActionListener(this);
+        deposit.addActionListener(this);
+        balance.addActionListener(this);
+        exit.addActionListener(this);
+
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.frame.setVisible(false);
         if(e.getSource() == withdraw){
-            frame.setVisible(false);
-            Withdraw withdraw = new Withdraw(this.user);
+            Withdraw withdraw = new Withdraw();
         }
-        if(e.getSource() == deposit){
-            frame.setVisible(false);
-            Deposit deposit= new Deposit(this.user);
+        else if(e.getSource() == deposit){
+            Deposit deposit= new Deposit();
+
         }
-        if(e.getSource() == balance){
-            frame.setVisible(false);
+        else if(e.getSource() == balance){
             Balance balance = new Balance(this.user);
         }
-        if(e.getSource() == exit){
-            frame.setVisible(false);
+        else{
             BankAccount loginPage = new LoginPage("src/AccountInfo");
         }
     }
+    public User getUser(){
+        return this.user;
+    }
 
     public static void main(String[] args) {
-        Bank bank = new Bank(new User("alex", 0,0));
+        //Bank bank = new Bank(new User("alex", 0,0));
     }
 
 }
