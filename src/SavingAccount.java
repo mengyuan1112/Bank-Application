@@ -48,11 +48,17 @@ public class SavingAccount extends BankAccount implements ActionListener {
             if (this.operation.equals("Withdraw")) {
                 int accountMoney = super.getUser().getSavingAccount();
                 int curMoney = Integer.parseInt(this.amountField.getText());
+                if (accountMoney < curMoney) {
+                    ExitWindow exitWindow = new ExitWindow("Not enough money");
+                    return;
+                }
+                ExitWindow exitWindow = new ExitWindow("Withdraw: " + this.amountField.getText());
                 super.getUser().WithDraw("Saving Account",curMoney);
             }
             if (this.operation.equals("Deposit")) {
                 int curMoney = Integer.parseInt(this.amountField.getText());
                 super.getUser().Deposit("Saving Account",curMoney);
+                ExitWindow exitWindow = new ExitWindow("Deposit: " + this.amountField.getText());
             }
         }
         else{
