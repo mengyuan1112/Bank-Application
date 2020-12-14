@@ -3,18 +3,18 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Withdraw implements ActionListener {
-
+public class Deposit implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton savingAccount = new JButton("Saving Account");
     private JButton checkingAccount = new JButton("Checking Account");
     private JButton exit = new JButton("Exit");
     private JLabel name = new JLabel();
-    private JLabel title = new JLabel("Withdraw");
+    private JLabel title = new JLabel("Deposit");
 
     private User user;
     private UserList userList;
-    Withdraw(UserList userList, User user){
+
+    Deposit(UserList userList, User user){
         this.user = user;
         this.userList = userList;
         name.setText(user.getUserId());
@@ -23,7 +23,7 @@ public class Withdraw implements ActionListener {
         checkingAccount.setBounds(210,150, 170, 50);
         exit.setBounds(140, 270,100,50);
         name.setBounds(165, 70,100,50);
-        title.setBounds(130, 30,200,50);
+        title.setBounds(145, 30,200,50);
 
         title.setFont(new Font(null,Font.BOLD,27));
         name.setFont(new Font(null,Font.ITALIC,30));
@@ -44,11 +44,11 @@ public class Withdraw implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == this.checkingAccount){
+        if(e.getSource() == this.checkingAccount){
             CheckingAccount checkingAccount = new CheckingAccount(this.userList,this.user);
             frame.setVisible(false);
         }
-        else if (e.getSource() == this.savingAccount){
+        else if(e.getSource() == this.savingAccount){
             SavingAccount savingAccount = new SavingAccount(this.userList,this.user);
             frame.setVisible(false);
         }
@@ -56,8 +56,5 @@ public class Withdraw implements ActionListener {
             frame.setVisible(false);
             Bank bank = new Bank(this.userList,this.user);
         }
-    }
-    public static void main(String[] args) {
-        Withdraw withdraw = new Withdraw(new UserList(),new User("alex", 0 , 0));
     }
 }

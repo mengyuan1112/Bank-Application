@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Bank implements ActionListener {
+public class Bank extends UserList implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton withdraw = new JButton("Withdraw");
     private JButton deposit = new JButton("Deposit");
@@ -15,6 +15,7 @@ public class Bank implements ActionListener {
     private User user;
     private UserList userList;
     Bank(UserList userList, User user){
+
         this.user = user;
         this.userList = userList;
         withdraw.setBounds(250,60,100,50);
@@ -53,15 +54,15 @@ public class Bank implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == withdraw){
             frame.setVisible(false);
-            Withdraw withdraw = new Withdraw();
+            Withdraw withdraw = new Withdraw(this.userList,this.user);
         }
         if(e.getSource() == deposit){
             frame.setVisible(false);
-            Deposite deposite= new Deposite();
+            Deposit deposit= new Deposit(this.userList,this.user);
         }
         if(e.getSource() == balance){
             frame.setVisible(false);
-            Balance balance = new Balance();
+            Balance balance = new Balance(this.userList,this.user);
         }
         if(e.getSource() == exit){
             frame.setVisible(false);
