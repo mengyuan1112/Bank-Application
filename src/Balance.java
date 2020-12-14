@@ -1,5 +1,5 @@
 public class Balance {
-    Balance(UserList userList, User user){
+    Balance(User user){
 
     }
 }

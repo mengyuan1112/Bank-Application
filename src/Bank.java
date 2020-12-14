@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Bank extends UserList implements ActionListener {
+public class Bank extends BankAccount implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton withdraw = new JButton("Withdraw");
     private JButton deposit = new JButton("Deposit");
@@ -13,11 +13,10 @@ public class Bank extends UserList implements ActionListener {
     private JLabel userId = new JLabel();
 
     private User user;
-    private UserList userList;
-    Bank(UserList userList, User user){
+
+    Bank(User user){
 
         this.user = user;
-        this.userList = userList;
         withdraw.setBounds(250,60,100,50);
         deposit.setBounds(250,120,100,50);
         balance.setBounds(250,180,100,50);
@@ -54,24 +53,24 @@ public class Bank extends UserList implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == withdraw){
             frame.setVisible(false);
-            Withdraw withdraw = new Withdraw(this.userList,this.user);
+            Withdraw withdraw = new Withdraw(this.user);
         }
         if(e.getSource() == deposit){
             frame.setVisible(false);
-            Deposit deposit= new Deposit(this.userList,this.user);
+            Deposit deposit= new Deposit(this.user);
         }
         if(e.getSource() == balance){
             frame.setVisible(false);
-            Balance balance = new Balance(this.userList,this.user);
+            Balance balance = new Balance(this.user);
         }
         if(e.getSource() == exit){
             frame.setVisible(false);
-            LoginPage loginPage = new LoginPage("src/AccountInfo", this.userList);
+            BankAccount loginPage = new LoginPage("src/AccountInfo");
         }
     }
 
     public static void main(String[] args) {
-        Bank bank = new Bank(new UserList(),new User("alex", 0,0));
+        Bank bank = new Bank(new User("alex", 0,0));
     }
 
 }

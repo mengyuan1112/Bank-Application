@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class LoginPage implements ActionListener {
+public class LoginPage extends BankAccount implements ActionListener {
     private JFrame frame = new JFrame();
     private JLabel userId = new JLabel("User");
     private JLabel password = new JLabel("Password");
@@ -17,11 +16,9 @@ public class LoginPage implements ActionListener {
     private JLabel success = new JLabel();
     private JButton register = new JButton("Register");
 
-    private  UserList userList;
 
-    LoginPage(String file, UserList userList){
+    LoginPage(String file){
 
-        this.userList = userList;
         userId.setBounds(10,20,80,25);
         password.setBounds(10,50,80,25);
         userText.setBounds(100,20,165,25);
@@ -64,9 +61,9 @@ public class LoginPage implements ActionListener {
                 ioException.printStackTrace();
             }
             if(found){
-                User user = this.userList.getUser(userId);
+                User user = super.getUser(userId);
                 frame.setVisible(false);
-                Bank bank = new Bank(this.userList, user);
+                BankAccount bank = new Bank(user);
             }
             else{
                 success.setText("Wrong Input");
@@ -74,7 +71,7 @@ public class LoginPage implements ActionListener {
         }
         else{
             frame.setVisible(false);
-            RegisterPage registerPage = new RegisterPage(this.userList,"src/AccountInfo");
+            BankAccount registerPage = new RegisterPage();
         }
     }
 
@@ -96,6 +93,6 @@ public class LoginPage implements ActionListener {
     }
 
     public static void main(String[] args) {
-        LoginPage loginPage = new LoginPage("src/AccountInfo", new UserList());
+        LoginPage loginPage = new LoginPage("src/AccountInfo");
     }
 }

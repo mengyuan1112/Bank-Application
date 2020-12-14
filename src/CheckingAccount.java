@@ -1,6 +1,6 @@
 public class CheckingAccount {
 
-    CheckingAccount(UserList userList,User user){
+    CheckingAccount(User user){
 
     }
 }

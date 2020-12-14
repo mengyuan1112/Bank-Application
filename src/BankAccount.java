@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class UserList {
-    private List<User> userList = new ArrayList<>();
+public class BankAccount {
+    static List<User> userList = new ArrayList<>();
 
     public void addToList(User user){
         userList.add(user);
