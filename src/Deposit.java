@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Deposit implements ActionListener {
+public class Deposit extends BankAccount implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton savingAccount = new JButton("Saving Account");
     private JButton checkingAccount = new JButton("Checking Account");
@@ -11,13 +11,10 @@ public class Deposit implements ActionListener {
     private JLabel name = new JLabel();
     private JLabel title = new JLabel("Deposit");
 
-    private User user;
-    private BankAccount bankAccount;
 
-    Deposit(User user){
-        this.user = user;
-        this.bankAccount = bankAccount;
-        name.setText(user.getUserId());
+    Deposit(){
+
+        name.setText(super.getUser().getUserId());
 
         savingAccount.setBounds(10,150, 170, 50);
         checkingAccount.setBounds(210,150, 170, 50);
@@ -45,12 +42,12 @@ public class Deposit implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.checkingAccount){
-            CheckingAccount checkingAccount = new CheckingAccount(this.title.getText());
             frame.setVisible(false);
+            BankAccount checkingAccount = new CheckingAccount(this.title.getText());
         }
         else if(e.getSource() == this.savingAccount){
-            SavingAccount savingAccount = new SavingAccount(this.title.getText());
             frame.setVisible(false);
+            SavingAccount savingAccount = new SavingAccount(this.title.getText());
         }
         else {
             frame.setVisible(false);

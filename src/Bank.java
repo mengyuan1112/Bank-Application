@@ -28,11 +28,6 @@ public class Bank extends BankAccount implements ActionListener {
 
 //        userId.setText(super.getUser().getUserId());
 
-        withdraw.addActionListener(this);
-        deposit.addActionListener(this);
-        balance.addActionListener(this);
-        exit.addActionListener(this);
-
 
         frame.add(withdraw);
         frame.add(deposit);
@@ -46,24 +41,29 @@ public class Bank extends BankAccount implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setVisible(true);
+
+        withdraw.addActionListener(this);
+        deposit.addActionListener(this);
+        balance.addActionListener(this);
+        exit.addActionListener(this);
+
+
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        this.frame.setVisible(false);
         if(e.getSource() == withdraw){
-            frame.setVisible(false);
-            Bank withdraw = new Withdraw();
+            Withdraw withdraw = new Withdraw();
         }
-        if(e.getSource() == deposit){
-            frame.setVisible(false);
-            Deposit deposit= new Deposit(this.user);
+        else if(e.getSource() == deposit){
+            Deposit deposit= new Deposit();
+
         }
-        if(e.getSource() == balance){
-            frame.setVisible(false);
+        else if(e.getSource() == balance){
             Balance balance = new Balance(this.user);
         }
-        if(e.getSource() == exit){
-            frame.setVisible(false);
+        else{
             BankAccount loginPage = new LoginPage("src/AccountInfo");
         }
     }

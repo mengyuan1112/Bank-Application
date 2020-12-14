@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CheckingAccount extends Bank implements ActionListener {
+public class CheckingAccount extends BankAccount implements ActionListener {
     private JButton submit = new JButton("Submit");
     private JFrame frame = new JFrame();
     private JLabel amount = new JLabel("Amount: ");
@@ -41,20 +41,17 @@ public class CheckingAccount extends Bank implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == submit) {
             if (this.operation.equals("Withdraw")) {
-                int accountMoney = super.user.getSavingAccount();
+                int accountMoney = super.getUser().getSavingAccount();
                 int curMoney = Integer.parseInt(this.amountField.getText());
-//            if(curMoney > accountMoney){
-//
-//                return;
-//            }
-                super.user.checkingAccountWithDraw(curMoney);
+                super.getUser().WithDraw("Checking Account",curMoney);
             }
             if (this.operation.equals("Deposit")) {
                 int curMoney = Integer.parseInt(this.amountField.getText());
-                super.user.checkingAccountDeposit(curMoney);
+                super.getUser().Deposit("Checking Account",curMoney);
             }
         }
         else{
+            frame.setVisible(false);
             Bank bank = new Bank();
         }
     }

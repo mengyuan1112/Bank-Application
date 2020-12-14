@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Withdraw extends Bank implements ActionListener {
+public class Withdraw extends BankAccount implements ActionListener {
 
     private JFrame frame = new JFrame();
     private JButton savingAccount = new JButton("Saving Account");
@@ -14,7 +14,7 @@ public class Withdraw extends Bank implements ActionListener {
 
 
     Withdraw(){
-        name.setText(user.getUserId());
+        name.setText(super.getUser().getUserId());
 
         savingAccount.setBounds(10,150, 170, 50);
         checkingAccount.setBounds(210,150, 170, 50);
@@ -28,11 +28,14 @@ public class Withdraw extends Bank implements ActionListener {
         savingAccount.addActionListener(this);
         checkingAccount.addActionListener(this);
         exit.addActionListener(this);
+
         frame.add(exit);
         frame.add(savingAccount);
         frame.add(checkingAccount);
         frame.add(name);
         frame.add(title);
+
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setSize(400, 400);
@@ -43,11 +46,11 @@ public class Withdraw extends Bank implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.checkingAccount){
             frame.setVisible(false);
-            Bank checkingAccount = new CheckingAccount(this.title.getText());
+            BankAccount checkingAccount = new CheckingAccount(this.title.getText());
         }
         else if (e.getSource() == this.savingAccount){
             frame.setVisible(false);
-            Bank savingAccount = new SavingAccount(this.title.getText());
+            SavingAccount savingAccount = new SavingAccount(this.title.getText());
         }
         else {
             frame.setVisible(false);
