@@ -62,8 +62,9 @@ public class LoginPage extends BankAccount implements ActionListener {
             }
             if(found){
                 User user = super.getUser(userId);
+//                super.addToList(user);
                 frame.setVisible(false);
-                BankAccount bank = new Bank(user);
+                BankAccount bank = new Bank();
             }
             else{
                 success.setText("Wrong Input");

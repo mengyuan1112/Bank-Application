@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Withdraw implements ActionListener {
+public class Withdraw extends Bank implements ActionListener {
 
     private JFrame frame = new JFrame();
     private JButton savingAccount = new JButton("Saving Account");
@@ -12,11 +12,8 @@ public class Withdraw implements ActionListener {
     private JLabel name = new JLabel();
     private JLabel title = new JLabel("Withdraw");
 
-    private User user;
-    private BankAccount bankAccount;
-    Withdraw(User user){
-        this.user = user;
-        this.bankAccount = bankAccount;
+
+    Withdraw(){
         name.setText(user.getUserId());
 
         savingAccount.setBounds(10,150, 170, 50);
@@ -45,19 +42,19 @@ public class Withdraw implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.checkingAccount){
-            CheckingAccount checkingAccount = new CheckingAccount(this.user);
             frame.setVisible(false);
+            Bank checkingAccount = new CheckingAccount(this.title.getText());
         }
         else if (e.getSource() == this.savingAccount){
-            SavingAccount savingAccount = new SavingAccount(this.user);
             frame.setVisible(false);
+            Bank savingAccount = new SavingAccount(this.title.getText());
         }
         else {
             frame.setVisible(false);
-            Bank bank = new Bank(this.user);
+            Bank bank = new Bank();
         }
     }
     public static void main(String[] args) {
-        Withdraw withdraw = new Withdraw(new User("alex", 0 , 0));
+//        Withdraw withdraw = new Withdraw(new User("alex", 0 , 0));
     }
 }

@@ -10,13 +10,12 @@ public class Bank extends BankAccount implements ActionListener {
     private JButton balance = new JButton("Balance");
     private JButton exit = new JButton("Exit");
     private JLabel welcome = new JLabel("Welcome");
-    private JLabel userId = new JLabel();
+    private JLabel userId = new JLabel(super.getUser().getUserId());
 
-    private User user;
+    public User user = super.getUser();
 
-    Bank(User user){
+    Bank(){
 
-        this.user = user;
         withdraw.setBounds(250,60,100,50);
         deposit.setBounds(250,120,100,50);
         balance.setBounds(250,180,100,50);
@@ -27,7 +26,7 @@ public class Bank extends BankAccount implements ActionListener {
         welcome.setFont(new Font(null, Font.BOLD,30));
 
 
-        userId.setText(user.getUserId());
+//        userId.setText(super.getUser().getUserId());
 
         withdraw.addActionListener(this);
         deposit.addActionListener(this);
@@ -53,7 +52,7 @@ public class Bank extends BankAccount implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == withdraw){
             frame.setVisible(false);
-            Withdraw withdraw = new Withdraw(this.user);
+            Bank withdraw = new Withdraw();
         }
         if(e.getSource() == deposit){
             frame.setVisible(false);
@@ -68,9 +67,12 @@ public class Bank extends BankAccount implements ActionListener {
             BankAccount loginPage = new LoginPage("src/AccountInfo");
         }
     }
+    public User getUser(){
+        return this.user;
+    }
 
     public static void main(String[] args) {
-        Bank bank = new Bank(new User("alex", 0,0));
+        //Bank bank = new Bank(new User("alex", 0,0));
     }
 
 }

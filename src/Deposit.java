@@ -45,16 +45,16 @@ public class Deposit implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.checkingAccount){
-            CheckingAccount checkingAccount = new CheckingAccount(this.user);
+            CheckingAccount checkingAccount = new CheckingAccount(this.title.getText());
             frame.setVisible(false);
         }
         else if(e.getSource() == this.savingAccount){
-            SavingAccount savingAccount = new SavingAccount(this.user);
+            SavingAccount savingAccount = new SavingAccount(this.title.getText());
             frame.setVisible(false);
         }
         else {
             frame.setVisible(false);
-            Bank bank = new Bank(this.user);
+            Bank bank = new Bank();
         }
     }
 }

@@ -22,7 +22,17 @@ public class User {
         return this.checkingAccount;
     }
 
-    public void withDraw(int money){
+    public void checkingAccountWithDraw(int money){
+        checkingAccount-=money;
+    }
+    public void checkingAccountDeposit(int money){
+        checkingAccount+=money;
+    }
 
+    public void savingAccountWithDraw(int money){
+        savingAccount-=money;
+    }
+    public void savingAccountDeposit(int money){
+        savingAccount+=money;
     }
 }
