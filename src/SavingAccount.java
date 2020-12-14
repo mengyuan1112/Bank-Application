@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.PrivateKey;
 
 public class SavingAccount extends User implements ActionListener {
 
@@ -10,9 +9,9 @@ public class SavingAccount extends User implements ActionListener {
     private JLabel amount = new JLabel("Amount");
     private JTextField amountField = new JTextField();
     private JButton exit = new JButton("Exit");
-    private UserList userList;
+    private BankAccount bankAccount;
     private User user;
-    SavingAccount(UserList userList,User user){
+    SavingAccount(User user){
         super(user.getUserId(), user.getCheckingAccount(),user.getSavingAccount());
 
     }

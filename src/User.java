@@ -1,8 +1,8 @@
 public class User {
-    public String userId;
-    public int checkingAccount;
-    public int savingAccount;
-    public static String message = "";
+    private String userId;
+    private int checkingAccount;
+    private int savingAccount;
+    private String message = "";
 
     User(String UserId, int checkingAccount, int savingAccount){
         this.userId = UserId;
@@ -22,8 +22,7 @@ public class User {
         return this.checkingAccount;
     }
 
-    public void withDraw(String account, int money){
-        if(account == "SavingAccount"){
-        }
+    public void withDraw(int money){
+
     }
 }

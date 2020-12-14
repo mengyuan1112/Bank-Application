@@ -12,11 +12,11 @@ public class Deposit implements ActionListener {
     private JLabel title = new JLabel("Deposit");
 
     private User user;
-    private UserList userList;
+    private BankAccount bankAccount;
 
-    Deposit(UserList userList, User user){
+    Deposit(User user){
         this.user = user;
-        this.userList = userList;
+        this.bankAccount = bankAccount;
         name.setText(user.getUserId());
 
         savingAccount.setBounds(10,150, 170, 50);
@@ -45,16 +45,16 @@ public class Deposit implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == this.checkingAccount){
-            CheckingAccount checkingAccount = new CheckingAccount(this.userList,this.user);
+            CheckingAccount checkingAccount = new CheckingAccount(this.user);
             frame.setVisible(false);
         }
         else if(e.getSource() == this.savingAccount){
-            SavingAccount savingAccount = new SavingAccount(this.userList,this.user);
+            SavingAccount savingAccount = new SavingAccount(this.user);
             frame.setVisible(false);
         }
         else {
             frame.setVisible(false);
-            Bank bank = new Bank(this.userList,this.user);
+            Bank bank = new Bank(this.user);
         }
     }
 }
