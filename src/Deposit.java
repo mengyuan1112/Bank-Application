@@ -19,7 +19,7 @@ public class Deposit extends BankAccount implements ActionListener {
         savingAccount.setBounds(10,150, 170, 50);
         checkingAccount.setBounds(210,150, 170, 50);
         exit.setBounds(140, 270,100,50);
-        name.setBounds(165, 70,100,50);
+        name.setBounds(165, 70,400,50);
         title.setBounds(145, 30,200,50);
 
         title.setFont(new Font(null,Font.BOLD,27));
@@ -47,7 +47,7 @@ public class Deposit extends BankAccount implements ActionListener {
         }
         else if(e.getSource() == this.savingAccount){
             frame.setVisible(false);
-            SavingAccount savingAccount = new SavingAccount(this.title.getText());
+            BankAccount savingAccount = new SavingAccount(this.title.getText());
         }
         else {
             frame.setVisible(false);

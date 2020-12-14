@@ -21,7 +21,7 @@ public class Bank extends BankAccount implements ActionListener {
         balance.setBounds(250,180,100,50);
         exit.setBounds(250,240,100,50);
         welcome.setBounds(50,80,150,100);
-        userId.setBounds(90, 120, 100, 100);
+        userId.setBounds(90, 120, 400, 100);
         userId.setFont(new Font(null, Font.ITALIC,24));
         welcome.setFont(new Font(null, Font.BOLD,30));
 
@@ -61,7 +61,7 @@ public class Bank extends BankAccount implements ActionListener {
 
         }
         else if(e.getSource() == balance){
-            Balance balance = new Balance(this.user);
+            Balance balance = new Balance();
         }
         else{
             BankAccount loginPage = new LoginPage("src/AccountInfo");
