@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class ExitWindow extends BankAccount implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton ok = new JButton("OK");
@@ -25,6 +27,18 @@ public class ExitWindow extends BankAccount implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(message.getText().contains("success")){
+            frame.setVisible(false);
+            BankAccount loginPage = new LoginPage("src/AccountInfo");
+        }
+        if(message.getText().contains("D")){
+            frame.setVisible(false);
+            Deposit deposit = new Deposit();
+        }
+        if(message.getText().contains("W")){
+            frame.setVisible(false);
+           Withdraw withdraw = new Withdraw();
+        }
         frame.setVisible(false);
     }
 

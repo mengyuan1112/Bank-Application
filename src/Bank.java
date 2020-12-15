@@ -14,6 +14,10 @@ public class Bank extends BankAccount implements ActionListener {
 
     public User user = super.getUser();
 
+
+    /**
+     * set up Bank UI
+     */
     Bank(){
 
         withdraw.setBounds(250,60,100,50);
@@ -50,6 +54,10 @@ public class Bank extends BankAccount implements ActionListener {
 
     }
 
+    /**
+     * take next action based on click
+     * @param e - button(deposit, withdraw, balance, exit)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         this.frame.setVisible(false);

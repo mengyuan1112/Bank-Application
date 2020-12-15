@@ -21,7 +21,7 @@ public class CheckingAccount extends BankAccount implements ActionListener {
         exit.setBounds(145, 300,70,30);
         amountField.setBounds(150,150, 170,50);
         amount.setBounds(60,150, 170, 50);
-        title.setText(type + " Saving Account");
+        title.setText(type + " Checking Account");
 
 
         frame.add(submit);
@@ -29,6 +29,8 @@ public class CheckingAccount extends BankAccount implements ActionListener {
         frame.add(exit);
         frame.add(amountField);
         frame.add(title);
+        submit.addActionListener(this);
+        exit.addActionListener(this);
 
 
         frame.setLayout(null);
@@ -41,18 +43,20 @@ public class CheckingAccount extends BankAccount implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == submit) {
             if (this.operation.equals("Withdraw")) {
-                int accountMoney = super.getUser().getSavingAccount();
+                int accountMoney = super.getUser().getCheckingAccount();
                 int curMoney = Integer.parseInt(this.amountField.getText());
                 if (accountMoney < curMoney) {
                     ExitWindow exitWindow = new ExitWindow("Not enough money");
                     return;
                 }
+                frame.setVisible(false);
                 ExitWindow exitWindow = new ExitWindow("Withdraw: " + this.amountField.getText());
                 super.getUser().WithDraw("Checking Account",curMoney);
             }
             if (this.operation.equals("Deposit")) {
                 int curMoney = Integer.parseInt(this.amountField.getText());
                 super.getUser().Deposit("Checking Account",curMoney);
+                frame.setVisible(false);
                 ExitWindow exitWindow = new ExitWindow("Deposit: " + this.amountField.getText());
             }
         }

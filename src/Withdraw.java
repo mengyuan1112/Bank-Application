@@ -13,6 +13,10 @@ public class Withdraw extends BankAccount implements ActionListener {
     private JLabel title = new JLabel("Withdraw");
 
 
+    /**
+     * set up Withdraw UI
+     */
+
     Withdraw(){
         name.setText(super.getUser().getUserId());
 
@@ -50,7 +54,7 @@ public class Withdraw extends BankAccount implements ActionListener {
         }
         else if (e.getSource() == this.savingAccount){
             frame.setVisible(false);
-            SavingAccount savingAccount = new SavingAccount(this.title.getText());
+            BankAccount savingAccount = new SavingAccount(this.title.getText());
         }
         else {
             frame.setVisible(false);

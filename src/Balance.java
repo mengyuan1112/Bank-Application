@@ -40,7 +40,7 @@ public class Balance extends BankAccount implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         frame.setVisible(false);
-        Bank bank = new Bank();
+        BankAccount bank = new Bank();
     }
 
     public static void main(String[] args) {

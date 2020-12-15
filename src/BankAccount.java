@@ -2,6 +2,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Class contains all user Information
+ */
 public class BankAccount {
     static List<User> userList = new ArrayList<>();
 

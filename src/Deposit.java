@@ -12,6 +12,9 @@ public class Deposit extends BankAccount implements ActionListener {
     private JLabel title = new JLabel("Deposit");
 
 
+    /**
+     * set up Deposit UI
+     */
     Deposit(){
 
         name.setText(super.getUser().getUserId());
