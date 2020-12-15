@@ -68,10 +68,12 @@ public class RegisterPage extends BankAccount implements ActionListener {
            } catch (IOException ioException) {
                ioException.printStackTrace();
            }
-
+           if(!message.getText().equals("Account exist")) {
+               frame.setVisible(false);
+               ExitWindow exitWindow = new ExitWindow(this.message.getText());
+           }
        }
        else{
-           frame.setVisible(false);
            BankAccount loginPage = new LoginPage("src/AccountInfo");
        }
     }

@@ -52,12 +52,14 @@ public class SavingAccount extends BankAccount implements ActionListener {
                     ExitWindow exitWindow = new ExitWindow("Not enough money");
                     return;
                 }
+                frame.setVisible(false);
                 ExitWindow exitWindow = new ExitWindow("Withdraw: " + this.amountField.getText());
                 super.getUser().WithDraw("Saving Account",curMoney);
             }
             if (this.operation.equals("Deposit")) {
                 int curMoney = Integer.parseInt(this.amountField.getText());
                 super.getUser().Deposit("Saving Account",curMoney);
+                frame.setVisible(false);
                 ExitWindow exitWindow = new ExitWindow("Deposit: " + this.amountField.getText());
             }
         }
