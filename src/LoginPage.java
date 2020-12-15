@@ -17,6 +17,10 @@ public class LoginPage extends BankAccount implements ActionListener {
     private JButton register = new JButton("Register");
 
 
+    /**
+     *
+     * @param file String - account information with textfile
+     */
     LoginPage(String file){
 
         userId.setBounds(10,20,80,25);
@@ -48,6 +52,11 @@ public class LoginPage extends BankAccount implements ActionListener {
         frame.setVisible(true);
     }
 
+
+    /**
+     * actionPerformed take action for next step
+     * @param e (login, register)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == login){
@@ -76,6 +85,13 @@ public class LoginPage extends BankAccount implements ActionListener {
         }
     }
 
+    /**
+     *
+     * @param user String take userId from current user
+     * @param password String User's Password
+     * @param fileName String storage for account
+     * @throws IOException
+     */
     public boolean readFile(String user, String password, String fileName) throws IOException {
         boolean IdFound = false;
         File file = new File(fileName);

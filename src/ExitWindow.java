@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+
 public class ExitWindow extends BankAccount implements ActionListener {
     private JFrame frame = new JFrame();
     private JButton ok = new JButton("OK");

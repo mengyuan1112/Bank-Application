@@ -19,8 +19,9 @@ public class RegisterPage extends BankAccount implements ActionListener {
     private JLabel message = new JLabel();
 
 
-
-
+    /**
+     * RegisterPage Setup GUI
+     */
     RegisterPage(){
 
         // Set up grid of Label and Button
@@ -55,6 +56,12 @@ public class RegisterPage extends BankAccount implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+
+    /**
+     * actionPerformed take action for next step
+     * @param e (register, exit)
+     * @return a new page for next step
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
        Object operation = e.getSource();
@@ -78,6 +85,13 @@ public class RegisterPage extends BankAccount implements ActionListener {
        }
     }
 
+    /**
+     *
+     * @param user String take userId from current user
+     * @param password String User's Password
+     * @param fileName String storage for account
+     * @throws IOException
+     */
 
     public void writeFile(String user, String password, String fileName) throws IOException{
             File file = new File(fileName);
